@@ -1,38 +1,39 @@
-.App {
-  text-align: center;
+.login-bg, .signup-bg{
+  background-image: url('https://static.vecteezy.com/system/resources/previews/011/083/131/large_2x/minimal-shopping-online-concept-colorful-paper-shopping-bag-go-down-from-floating-blue-background-for-copy-space-customer-can-buy-everything-form-home-and-the-messenger-will-deliver-free-photo.jpg');
+  background-size: cover;
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.browse-header{
+  background-image: url('https://img.freepik.com/premium-photo/shopping-bags-white-background-concept-shopping-discount-sale-banner_164357-1137.jpg?w=2000');
+  background-size: cover;
+  padding: 50px;
+  border-radius: 40px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.browse-shop-header{
+  background-image: url('https://img.freepik.com/premium-photo/black-friday-concept-with-cart-space_23-2147709970.jpg?w=2000');
+  background-size: cover;
+  background-position: center;
+  padding: 50px;
+  border-radius: 40px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.card{
+  border-radius: 10px !important;
 }
 
-.App-link {
-  color: #61dafb;
+.img-top{
+  border-radius: 10px 10px 0px 0px !important;
+  background-size: cover;
+  background-position: center;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.fit-img{
+  height: 250px;
+}
+
+.browse-page{
+  background-image: linear-gradient(45deg, #ff9fd4, #8cf5ff);
 }
