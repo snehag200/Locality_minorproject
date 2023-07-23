@@ -8,6 +8,7 @@ import Navbar from './component/Navbar';
 import Checkout from './component/Checkout';
 import AddShop from './component/AddShop';
 import BrowseShop from './component/BrowseShop';
+import BrowseProducts from './component/BrowseProducts';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route element={<Signup />} path="signup" />
           <Route element={<AddShop />} path="Addshop" />
           <Route element={<BrowseShop />} path="Browseshop" />
+          <Route element={<BrowseProducts />} path="Browseproduct/:index" />
           <Route element={<Checkout />} path="Checkout" />
 
         </Routes>

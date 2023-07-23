@@ -6,12 +6,13 @@ const placeholder = 'https://cwdaust.com.au/wpress/wp-content/uploads/2015/04/pl
 
 const BrowseProducts = () => {
   const { index } = useParams();
+  console.log(ShopData);
   const [selShop, setSelShop] = useState(ShopData[index]);
 
   const showProducts = () => {
     return (
       <div className="row">
-        {selShop.products.map((product) => (
+        {selShop.items.map((product) => (
           <div className="col-md-3">
             <div className="card">
               <img src={product.image ? product.image : placeholder} alt="" />
@@ -26,7 +27,13 @@ const BrowseProducts = () => {
     );
   };
 
-  return <div>BrowseProducts</div>;
+  return <div>
+    <header>
+        <h1>Shop Products from {selShop.title}</h1>
+        <hr />
+        {showProducts()}
+    </header>
+  </div>;
 };
 
 export default BrowseProducts;
