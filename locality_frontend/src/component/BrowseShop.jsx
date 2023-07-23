@@ -6,21 +6,33 @@ const placeholder =
 
 const BrowseShop = () => {
   return (
-    <div>
+    <div className="browse-page pt-5">
       <header>
-        <div className="container py-5">
-          <h1>Browse Shops near You</h1>
+        <div className="container browse-header">
+          <h1 className="p-5">Browse Shops Near You</h1>
         </div>
       </header>
       <div className="container">
-        <div className="row">
+        <div className="row mt-4">
           {ShopData.map((shop, index) => (
-            <div className="col-md-3">
+            <div className="col-md-3 mb-4">
               <div className="card">
-                <img src={shop.image ? shop.image : placeholder} alt="" />
+                <div
+                  className="fit-img img-top"
+                  style={{
+                    backgroundImage: `url('${
+                      shop.image ? shop.image : placeholder
+                    }')`,
+                  }}
+                ></div>
                 <div className="card-body">
                   <h4>{shop.title}</h4>
-                  <NavLink className="btn btn-primary" to={'/Browseproduct/'+index}>Order Now</NavLink>
+                  <NavLink
+                    className="btn btn-primary"
+                    to={"/Browseproduct/" + index}
+                  >
+                    Order Now
+                  </NavLink>
                 </div>
               </div>
             </div>

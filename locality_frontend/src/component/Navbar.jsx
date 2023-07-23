@@ -1,9 +1,39 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useUserContext } from "../UserContext";
 
 const Navbar = () => {
+  const { loggedin, logout } = useUserContext();
+
+  const showUserOptions = () => {
+    if (loggedin) {
+      return (
+        <ul className="navbar-nav ms-auto">
+          <button onClick={logout} className="btn btn-danger">
+            Logout
+          </button>
+        </ul>
+      );
+    } else {
+      return (
+        <ul className="navbar-nav ms-auto">
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/signup">
+              Signup
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/login">
+              Login
+            </NavLink>
+          </li>
+        </ul>
+      );
+    }
+  };
+
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
       <div className="container">
         <NavLink className="navbar-brand" to="/">
           Locality
@@ -27,77 +57,13 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/login">
-                Login page
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/signup">
-                Signup page
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/AddShop">
-                AddShop
-              </NavLink>
-            </li>
-            <li className="nav-item">
               <NavLink className="nav-link" to="/BrowseShop">
                 BrowseShop
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/Checkout">
-                Checkout
-              </NavLink>
-            </li>
-
-            <li className="nav-item ">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown
-              </a>
-              <ul className="dropdown-menu">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link disabled">Disabled</a>
-            </li>
+           
           </ul>
-          <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
+          {showUserOptions()}
         </div>
       </div>
     </nav>

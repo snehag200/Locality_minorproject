@@ -51,9 +51,9 @@ const Signup = () => {
   });
 
   return (
-    <div>
-      <div className="col-md-3 mx-auto">
-        <div className="card">
+    <div className="signup-bg">
+      <div className="col-md-3 mx-auto d-flex align-items-center h-100">
+        <div className="card w-100">
           <div className="card-body">
             <h2 className="my-5 text-center">Signup Form</h2>
 
