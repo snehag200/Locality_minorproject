@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ShopData from './shopData'
-
+import { useParams } from 'react-router-dom';
 const placeholder = 'https://cwdaust.com.au/wpress/wp-content/uploads/2015/04/placeholder-store.png';
 
-const {index} = 
+
 
 const BrowseShop = () => {
+  
+  
+
+  
 
   return (
     <div>
