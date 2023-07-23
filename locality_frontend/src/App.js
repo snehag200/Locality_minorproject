@@ -13,11 +13,11 @@ import BrowseProducts from './component/BrowseProducts';
 
 function App() {
   return (
-    <div className="container">
+    <div>
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route element={<Home />} path="home" />
+          <Route element={<BrowseShop />} path="/" />
           <Route element={<Login />} path="login" />
           <Route element={<Signup />} path="signup" />
           <Route element={<AddShop />} path="Addshop" />
