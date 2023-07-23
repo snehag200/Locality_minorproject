@@ -1,14 +1,26 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ShopData from "./shopData";
-const placeholder = 'https://cwdaust.com.au/wpress/wp-content/uploads/2015/04/placeholder-store.png';
-
+const placeholder =
+  "https://cwdaust.com.au/wpress/wp-content/uploads/2015/04/placeholder-store.png";
 
 const BrowseProducts = () => {
-  
-    const { index } = useParams();
+  const { index } = useParams();
+
+  const navigate = useNavigate();
   console.log(ShopData);
   const [selShop, setSelShop] = useState(ShopData[index]);
+
+  const [selProducts, setSelProducts] = useState([]);
+
+  const checkout = () => {
+    sessionStorage.setItem("products", JSON.stringify(selProducts));
+    navigate("/checkout");
+  };
+
+  const selectProduct = (product) => {
+    setSelProducts([...selProducts, product]);
+  };
 
   const showProducts = () => {
     return (
@@ -18,8 +30,15 @@ const BrowseProducts = () => {
             <div className="card">
               <img src={product.image ? product.image : placeholder} alt="" />
               <div className="card-body">
-                <h4>{product.title}</h4>
-                <button className="btn btn-primary">Order Now</button>
+                <h4>{product.name}</h4>
+                <h5>Price: ₹{product.price}</h5>
+                <button
+                  disabled={selProducts.find((prod) => prod.name === product.name)}
+                  onClick={() => selectProduct(product)}
+                  className="btn btn-primary"
+                >
+                  {selProducts.find((prod) => prod.name === product.name) ? "Selected" : "Select"}
+                </button>
               </div>
             </div>
           </div>
@@ -28,13 +47,18 @@ const BrowseProducts = () => {
     );
   };
 
-  return <div>
-    <header>
+  return (
+    <div>
+      <header>
         <h1>Shop Products from {selShop.title}</h1>
         <hr />
+        <button onClick={checkout} className="btn btn-primary mb-4">
+          Proceed to Checkout
+        </button>
         {showProducts()}
-    </header>
-  </div>;
+      </header>
+    </div>
+  );
 };
 
 export default BrowseProducts;
