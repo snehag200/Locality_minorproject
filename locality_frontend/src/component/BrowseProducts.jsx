@@ -5,7 +5,8 @@ const placeholder = 'https://cwdaust.com.au/wpress/wp-content/uploads/2015/04/pl
 
 
 const BrowseProducts = () => {
-  const { index } = useParams();
+  
+    const { index } = useParams();
   console.log(ShopData);
   const [selShop, setSelShop] = useState(ShopData[index]);
 
