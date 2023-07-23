@@ -54,7 +54,7 @@ const ShopData = [
             {
                 name: 'johnson',
                 image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDf9b_bO8Pi8KHnDlCHA7c7b5D4QUdwswyyw&usqp=CAU',
-                price: 5000
+                price: 3000
             }
         ]
     },{
