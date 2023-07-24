@@ -60,7 +60,7 @@ const Signup = () => {
             <form onSubmit={signupForm.handleSubmit}>
               <label htmlFor="">Name</label>
               <span style={{color: 'red', fontSize: 15, marginLeft: 10}}>{signupForm.touched.name && signupForm.errors.name}</span>
-              <input className="form-control mb-3" onChange={signupForm.handleChange} value={signupForm.values.name} name="name" />
+              <input className="form-control mb-3" required onChange={signupForm.handleChange} value={signupForm.values.name} name="name" />
               
               <label htmlFor="">Email</label>
               <span style={{color: 'red', fontSize: 15, marginLeft: 10}}>{signupForm.touched.email && signupForm.errors.email}</span>
