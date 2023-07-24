@@ -10,6 +10,7 @@ import AddShop from "./component/AddShop";
 import BrowseShop from "./component/BrowseShop";
 import BrowseProducts from "./component/BrowseProducts";
 import { UserProvider } from "./UserContext";
+import ViewOrders from "./component/ViewOrders";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route element={<BrowseShop />} path="Browseshop" />
             <Route element={<BrowseProducts />} path="Browseproduct/:index" />
             <Route element={<Checkout />} path="Checkout" />
+            <Route element={<ViewOrders />} path="orders" />
           </Routes>
         </UserProvider>
       </BrowserRouter>

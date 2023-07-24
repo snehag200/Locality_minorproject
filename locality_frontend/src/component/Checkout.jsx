@@ -1,8 +1,13 @@
 import { useFormik } from "formik";
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Checkout = () => {
+
+  const navigate = useNavigate();
+
   const [productList, setProducts] = useState(
     JSON.parse(sessionStorage.getItem("products"))
   );
@@ -15,30 +20,36 @@ const Checkout = () => {
     return total;
   };
 
-  const addOrder = async () => {
+  const addOrder = async (values) => {
     const response = await fetch("http://localhost:5000/order/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(productList),
+      body: JSON.stringify(values),
     });
     const data = await response.json();
     console.log(data);
+    sessionStorage.removeItem("products");
+    navigate("/orders");
+    Swal.fire({
+      title: "Order Placed Successfully",
+      text: "Thank You for your order",
+      icon: "success",
+    })
   };
 
   const orderForm = useFormik({
     initialValues: {
-      name: "",
-      price: "",
-      quantity: "",
+      items: productList,
+      totalAmt: calculateTotal(),
       username: "",
       useraddress: "",
     },
 
     onSubmit: (values) => {
       console.log(values);
-      addOrder();
+      addOrder(values);
     },
   });
 
@@ -54,7 +65,7 @@ const Checkout = () => {
                 <img src={product.image} alt="" />
                 <div className="card-body">
                   <h4>{product.name}</h4>
-                  <h5>Price: {product.price}</h5>
+                  <h5>Price: ₹{product.price}</h5>
                 </div>
               </div>
             </div>
@@ -62,7 +73,29 @@ const Checkout = () => {
         </div>
         <hr />
 
-        <h3>Total Amount : {calculateTotal()}</h3>
+        <h3>Total Amount : ₹{calculateTotal()}</h3>
+        <hr />
+        <form onSubmit={orderForm.handleSubmit}>
+          <label htmlFor="">User Name</label>
+          <input
+            type="text"
+            name="username"
+            className="form-control mb-3"
+            onChange={orderForm.handleChange}
+            value={orderForm.values.username}
+          />
+
+          <label htmlFor="">User Address</label>
+          <textarea
+            type="text"
+            name="useraddress"
+            className="form-control mb-3"
+            rows={4}
+            onChange={orderForm.handleChange}
+            value={orderForm.values.useraddress}
+          ></textarea>
+          <button className="btn btn-primary mt-5">Place Order</button>
+        </form>
       </div>
     </div>
   );
