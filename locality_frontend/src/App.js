@@ -9,7 +9,6 @@ import Checkout from "./component/Checkout";
 import AddShop from "./component/AddShop";
 import BrowseShop from "./component/BrowseShop";
 import BrowseProducts from "./component/BrowseProducts";
-
 import { UserProvider } from "./UserContext";
 
 function App() {
